@@ -64,11 +64,37 @@ namespace KataBankOCR.Tests.Properties {
         ///   Looks up a localized string similar to  _  _  _  _  _  _  _  _  _ 
         ///| || || || || || || || || |
         ///|_||_||_||_||_||_||_||_||_|
+        ///                           
+        ///  |  |  |  |  |  |  |  |  |
+        ///  |  |  |  |  |  |  |  |  |
+        ///                           
+        /// _  _  _  _  _  _  _  _  _ 
+        /// _| _| _| _| _| _| _| _| _|
+        ///|_ |_ |_ |_ |_ |_ |_ |_ |_ 
+        ///                           
+        /// _  _  _  _  _  _  _  _  _ 
+        /// _| _| _| _| _| _| _| _| _|
+        /// _| _| _| _| _| _| _| _| _|
+        ///                           
+        ///                           
+        ///|_||_||_||_||_||_||_||_||_|
+        ///  |  |  |  |  |  |  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string FileWith10Entries {
+            get {
+                return ResourceManager.GetString("FileWith10Entries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  _  _  _  _  _  _  _  _  _ 
+        ///| || || || || || || || || |
+        ///|_||_||_||_||_||_||_||_||_|
         ///                           .
         /// </summary>
-        internal static string OneLine {
+        internal static string FileWith1Entries {
             get {
-                return ResourceManager.GetString("OneLine", resourceCulture);
+                return ResourceManager.GetString("FileWith1Entries", resourceCulture);
             }
         }
     }

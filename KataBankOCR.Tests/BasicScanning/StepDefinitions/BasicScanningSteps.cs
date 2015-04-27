@@ -6,45 +6,33 @@ using System.Linq;
 
 namespace KataBankOCR.Tests.BasicScanning.StepDefinitions
 {
+    using System.IO;
+
     [Binding]
     public class BasicScanningSteps
     {
         private readonly ScanViewModel scanViewModel = new ScanViewModel();
 
-        [Given(@"the machine produces one entry")]
-        public void GivenTheMachineProducesOneEntry()
+        [Given(@"the machine produces (.*) valid entry\(ies\)")]
+        public void GivenTheMachineProducesOneEntry(int entries)
         {
-            ScenarioContext.Current.Add("file", Resources.OneLine);
+            string fileName = string.Format("FileWith{0}Entries", entries);
+            ScenarioContext.Current.Add("file", Resources.ResourceManager.GetString(fileName));
         }
 
-        [Given(@"the entry has exactly (.*) lines")]
-        public void GivenTheEntryHasExactlyLines(int lines)
-        {
-            ScenarioContext.Current.ContainsKey("file");
-        }
-
-        [Given(@"each line has exactly (.*) characters")]
-        public void GivenEachLineHasExactlyCharacters(int chars)
-        {
-            ScenarioContext.Current.ContainsKey("file");
-        }
-
-        [When(@"I scan the entry")]
+        [When(@"I scan")]
         public void WhenIScanTheEntry()
         {
             scanViewModel.Scan(ScenarioContext.Current.Get<string>("file"));
         }
 
-        [Then(@"the result should a bank account number")]
-        public void ThenTheResultShouldABankAccountNumber()
+        [Then(@"the result should (.*) valid bank account number\(s\)")]
+        public void ThenTheResultShouldABankAccountNumber(int expectedAccountNumberCount)
         {
-            Assert.DoesNotThrow(() => scanViewModel.AccountNumbers.Single());
-        }
+            var accountNumbersList = this.scanViewModel.AccountNumbers.ToList();
 
-        [Then(@"the account number should be (.*) digits long")]
-        public void ThenTheAccountNumberShouldBeDigitsLong(int p0)
-        {
-            Assert.AreEqual(p0, scanViewModel.AccountNumbers.Single().Length);
+            Assert.That(accountNumbersList, Has.Count.EqualTo(expectedAccountNumberCount));
+            Assert.That(accountNumbersList, Has.All.Matches<string>(x=>x.Length == 9));
         }
     }
 }

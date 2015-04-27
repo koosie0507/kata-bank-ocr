@@ -39,7 +39,7 @@ namespace KataBankOCR.Tests.BasicScanning
   which each look like this:
       _  _     _  _  _  _  _
     | _| _||_||_ |_   ||_||_|
-    ||_  _|  | _||_|  ||_| _| 
+    ||_  _|  | _||_|  ||_| _|
                          
   Each entry is 4 lines long, and each line has 27 characters.
   The first 3 lines of each entry contain an account number
@@ -79,26 +79,39 @@ namespace KataBankOCR.Tests.BasicScanning
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Scan one line")]
+        [NUnit.Framework.DescriptionAttribute("Scan line with all digits")]
         [NUnit.Framework.CategoryAttribute("scan")]
-        public virtual void ScanOneLine()
+        public virtual void ScanLineWithAllDigits()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Scan one line", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Scan line with all digits", new string[] {
                         "scan"});
 #line 19
 this.ScenarioSetup(scenarioInfo);
 #line 20
-    testRunner.Given("the machine produces one entry", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("the machine produces 1 valid entry(ies)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 21
-    testRunner.And("the entry has exactly 4 lines", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.When("I scan", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 22
-    testRunner.And("each line has exactly 27 characters", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 23
-    testRunner.When("I scan the entry", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 24
-    testRunner.Then("the result should a bank account number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("the result should 1 valid bank account number(s)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Scan lines with repeating number sequences")]
+        [NUnit.Framework.CategoryAttribute("scan")]
+        public virtual void ScanLinesWithRepeatingNumberSequences()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Scan lines with repeating number sequences", new string[] {
+                        "scan"});
 #line 25
-    testRunner.And("the account number should be 9 digits long", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
+#line 26
+ testRunner.Given("the machine produces 10 valid entry(ies)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 27
+ testRunner.When("I scan", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 28
+    testRunner.Then("the result should 10 valid bank account number(s)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

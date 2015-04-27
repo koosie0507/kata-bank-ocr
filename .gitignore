@@ -3,6 +3,7 @@
 *.dll
 *.suo
 *.user
+*.ncrunch*
 packages/
 obj/
 bin/

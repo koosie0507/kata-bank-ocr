@@ -83,7 +83,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BasicScanning\OneLine.txt" />
+    <Content Include="BasicScanning\FileWith10Entries.txt" />
+    <Content Include="BasicScanning\FileWith1Entries.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KataBankOCR\KataBankOCR.csproj">
