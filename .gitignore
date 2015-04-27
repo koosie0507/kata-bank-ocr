@@ -1,0 +1,8 @@
+*.v12
+*.exe
+*.dll
+*.suo
+*.user
+packages/
+obj/
+bin/
