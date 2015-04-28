@@ -1,13 +1,10 @@
 ﻿using KataBankOCR.Tests.Properties;
 using TechTalk.SpecFlow;
-using KataBankOCR;
 using NUnit.Framework;
 using System.Linq;
 
 namespace KataBankOCR.Tests.BasicScanning.StepDefinitions
 {
-    using System.IO;
-
     [Binding]
     public class BasicScanningSteps
     {

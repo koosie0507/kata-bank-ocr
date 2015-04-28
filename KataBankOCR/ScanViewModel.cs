@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace KataBankOCR
 {
-    using System;
-    using System.Diagnostics;
-
     public class ScanViewModel : INotifyPropertyChanged
     {
         private static readonly Dictionary<string, char> GlyphsToChars = new Dictionary<string, char>
@@ -23,26 +21,43 @@ namespace KataBankOCR
                                                                                  {" _ |_||_|", '8'},
                                                                                  {" _ |_| _|", '9'}
                                                                              };
+        private IEnumerable<string> accountNumbers;
 
-        internal const int MachineLineWidth = 27;
-
-        public IEnumerable<string> AccountNumbers { get; private set; }
 
         public ScanViewModel()
         {
-            AccountNumbers = Enumerable.Empty<string>();
+            this.AccountNumbers = Enumerable.Empty<string>();
         }
+
+        public IEnumerable<string> AccountNumbers
+        {
+            get
+            {
+                return this.accountNumbers;
+            }
+            private set
+            {
+                this.accountNumbers = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public void Scan(string fileContents)
+        {
+            this.AccountNumbers = this.ParseAccountNumbers(fileContents);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private IEnumerable<string> GetGlyphs(string[] entryLines)
         {
-            for (int j = 0; j < MachineLineWidth; j += 3)
+            for (int j = 0; j < 27; j += 3)
             {
                 var glyphs = string.Join(
                     string.Empty,
                     entryLines[0].Substring(j, 3),
                     entryLines[1].Substring(j, 3),
                     entryLines[2].Substring(j, 3));
-                Debug.WriteLine(glyphs.Substring(0,9));
                 yield return glyphs;
             }
         }
@@ -59,17 +74,10 @@ namespace KataBankOCR
             }
         }
 
-        public void Scan(string fileContents)
-        {
-            AccountNumbers = ParseAccountNumbers(fileContents);
-        }
-
         private void RaisePropertyChanged([CallerMemberName] string propertyName = null)
         {
-            PropertyChangedEventHandler handler = PropertyChanged;
+            PropertyChangedEventHandler handler = this.PropertyChanged;
             if(handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
