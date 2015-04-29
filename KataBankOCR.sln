@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KataBankOCR", "KataBankOCR\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KataBankOCR.Tests", "KataBankOCR.Tests\KataBankOCR.Tests.csproj", "{8863C1F4-F545-4873-934E-EDB6405130F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfBankOCR", "WpfBankOCR\WpfBankOCR.csproj", "{1273088D-BC90-4F73-9F84-078788AE0348}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8863C1F4-F545-4873-934E-EDB6405130F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8863C1F4-F545-4873-934E-EDB6405130F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8863C1F4-F545-4873-934E-EDB6405130F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1273088D-BC90-4F73-9F84-078788AE0348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1273088D-BC90-4F73-9F84-078788AE0348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1273088D-BC90-4F73-9F84-078788AE0348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1273088D-BC90-4F73-9F84-078788AE0348}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -44,7 +44,7 @@ namespace KataBankOCR
 
         public void Scan(string fileContents)
         {
-            this.AccountNumbers = this.ParseAccountNumbers(fileContents);
+            this.AccountNumbers = this.ParseAccountNumbers(fileContents).ToList();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
