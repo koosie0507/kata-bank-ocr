@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="Wp8BankOCR.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="OCR converter" Style="{ThemeResource HeaderTextBlockStyle}" />
+        <TextBlock Grid.Row="1" Text="Pick a file" Style="{ThemeResource TitleTextBlockStyle}" />
+        <ComboBox x:Name="FilePicker" Grid.Row="2" SelectionChanged="OnFilePickerSelectionChanged" />
+        <ListBox Grid.Row="3" ItemsSource="{Binding AccountNumbers, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+    </Grid>
+</Page>
