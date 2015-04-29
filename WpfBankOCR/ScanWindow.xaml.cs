@@ -1,12 +1,12 @@
-﻿namespace WpfBankOCR
+﻿using System.IO;
+using System.Text;
+
+using KataBankOCR;
+
+using Microsoft.Win32;
+
+namespace WpfBankOCR
 {
-    using System.IO;
-    using System.Text;
-
-    using KataBankOCR;
-
-    using Microsoft.Win32;
-
     public partial class ScanWindow
     {
         private readonly ScanViewModel viewModel;
