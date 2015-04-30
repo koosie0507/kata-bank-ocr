@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+  <string name="Hello">Hello World, Click Me!</string>
+  <string name="ApplicationName">AndroidBankOCR</string>
+  <string name="filePicker_prompt">Pick a file</string>
+  <string-array name="fileNames">
+    <item>TextFile1.txt</item>
+    <item>TextFile2.txt</item>
+    <item>TextFile3.txt</item>
+  </string-array>
+</resources>
