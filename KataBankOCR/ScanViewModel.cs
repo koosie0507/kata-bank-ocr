@@ -65,7 +65,7 @@ namespace KataBankOCR
         private IEnumerable<string> ParseAccountNumbers(string fileContents)
         {
             string[] lines = fileContents.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 0; i < lines.Length; i += 4)
+            for (int i = 0; i < lines.Length-2; i += 4)
             {
                 char[] accountNumberChars = this.GetGlyphs(new[] {lines[i], lines[i+1], lines[i+2]})
                     .Select(glyph => GlyphsToChars[glyph])
